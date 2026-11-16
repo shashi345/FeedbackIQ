@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeedbackIQ | Course Feedback Analyser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>FeedbackIQ</h1>
+      <p>Course Feedback Sentiment & Ratings Analyser</p>
+    </div>
+    <span class="badge">CP-039</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Student Feedback Dashboard</h2>
+        <p>Collect feedback, analyse ratings, detect sentiment and identify courses that need attention.</p>
+      </div>
+      <button class="primary" onclick="showSection('feedback')">+ Add Feedback</button>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><span>Total Feedback</span><strong id="totalFeedback">0</strong></div>
+      <div class="stat"><span>Average Rating</span><strong id="overallRating">0.00</strong></div>
+      <div class="stat"><span>Positive Comments</span><strong id="positiveCount">0</strong></div>
+      <div class="stat"><span>Flagged Courses</span><strong id="flaggedCount">0</strong></div>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" onclick="showSection('dashboard', this)">Dashboard</button>
+      <button class="tab" onclick="showSection('feedback', this)">Add Feedback</button>
+      <button class="tab" onclick="showSection('courses', this)">Course Analysis</button>
+      <button class="tab" onclick="showSection('faculty', this)">Faculty Reports</button>
+      <button class="tab" onclick="showSection('sentiment', this)">Sentiment</button>
+      <button class="tab" onclick="showSection('flagged', this)">Flagged Courses</button>
+    </nav>
+
+    <section id="dashboard" class="page active">
+      <div class="card">
+        <h3>About FeedbackIQ</h3>
+        <p>FeedbackIQ stores course feedback using five rating parameters: Teaching Quality, Clarity, Course Content, Assessment and Faculty Interaction. Comments are analysed with keyword-based sentiment classification.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>Rating Parameters</h3>
+          <div class="parameter">Teaching Quality <span>1–5</span></div>
+          <div class="parameter">Clarity of Explanation <span>1–5</span></div>
+          <div class="parameter">Course Content <span>1–5</span></div>
+          <div class="parameter">Assessment <span>1–5</span></div>
+          <div class="parameter">Faculty Interaction <span>1–5</span></div>
+        </div>
+        <div class="card">
+          <h3>How it works</h3>
+          <ol class="steps">
+            <li>Add student feedback.</li>
+            <li>Calculate course and faculty averages.</li>
+            <li>Classify comments as positive, negative or neutral.</li>
+            <li>Flag courses when any parameter average is below 3.</li>
+            <li>Generate faculty strengths and improvement areas.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="page">
+      <div class="card">
+        <h3>Add Student Feedback</h3>
+        <form id="feedbackForm">
+          <div class="grid two">
+            <label>Course Name
+              <input id="course" required placeholder="e.g. Digital Signal Processing">
+            </label>
+            <label>Faculty Name
+              <input id="faculty" required placeholder="e.g. Dr. Kumar">
+            </label>
+          </div>
+
+          <div class="rating-grid">
+            <label>Teaching Quality <select id="teaching" required></select></label>
+            <label>Clarity of Explanation <select id="clarity" required></select></label>
+            <label>Course Content <select id="content" required></select></label>
+            <label>Assessment <select id="assessment" required></select></label>
+            <label>Faculty Interaction <select id="interaction" required></select></label>
+          </div>
+
+          <label>Student Comment
+            <textarea id="comment" required placeholder="Write your feedback here..."></textarea>
+          </label>
+
+          <button class="primary" type="submit">Save Feedback</button>
+          <button class="secondary" type="button" onclick="loadDemoData()">Load Demo Data</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="courses" class="page">
+      <div class="card">
+        <div class="section-head">
+          <div><h3>Course Analysis</h3><p>Average rating for each course.</p></div>
+          <select id="courseSelect" onchange="renderCourseAnalysis()"></select>
+        </div>
+        <div id="courseAnalysis"></div>
+      </div>
+    </section>
+
+    <section id="faculty" class="page">
+      <div class="card">
+        <div class="section-head">
+          <div><h3>Faculty Reports</h3><p>Strengths, improvement areas and sentiment summary.</p></div>
+          <select id="facultySelect" onchange="renderFacultyReport()"></select>
+        </div>
+        <div id="facultyReport"></div>
+      </div>
+    </section>
+
+    <section id="sentiment" class="page">
+      <div class="card">
+        <h3>Comment Sentiment Analysis</h3>
+        <div id="sentimentList"></div>
+      </div>
+    </section>
+
+    <section id="flagged" class="page">
+      <div class="card">
+        <h3>Flagged Courses</h3>
+        <p class="muted">A course is flagged when the average of any rating parameter is below 3.</p>
+        <div id="flaggedList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>FeedbackIQ • CP-039 • Course Feedback Sentiment and Ratings Analyser</footer>
+  <script src="script.js"></script>
+</body>
+</html>

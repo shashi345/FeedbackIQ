@@ -1,0 +1,65 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #f4f7fb; --card: #ffffff; --text: #172033; --muted: #667085;
+  --line: #e4e8f0; --primary: #315efb; --primary-dark: #2448ca;
+  --success: #16845b; --danger: #c73939; --warning: #a66a00;
+}
+body { margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--bg); color:var(--text); }
+.topbar { background:#111827; color:white; padding:22px 6%; display:flex; justify-content:space-between; align-items:center; }
+.topbar h1 { margin:0; font-size:28px; }
+.topbar p { margin:5px 0 0; color:#cbd5e1; }
+.badge { border:1px solid #64748b; border-radius:20px; padding:8px 14px; }
+.container { width:min(1150px,92%); margin:28px auto; }
+.hero { background:linear-gradient(135deg,#eef3ff,#fff); border:1px solid var(--line); border-radius:18px; padding:28px; display:flex; justify-content:space-between; gap:20px; align-items:center; }
+.hero h2 { margin:0 0 8px; }
+.hero p { color:var(--muted); margin:0; max-width:700px; line-height:1.6; }
+button { border:0; cursor:pointer; font-weight:600; }
+.primary { background:var(--primary); color:white; padding:11px 17px; border-radius:9px; }
+.primary:hover { background:var(--primary-dark); }
+.secondary { background:#eef2f7; color:var(--text); padding:11px 17px; border-radius:9px; margin-left:8px; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin:20px 0; }
+.stat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; }
+.stat span { color:var(--muted); display:block; font-size:13px; }
+.stat strong { font-size:28px; display:block; margin-top:8px; }
+.tabs { display:flex; gap:7px; flex-wrap:wrap; margin:20px 0; }
+.tab { background:#e9edf5; padding:10px 15px; border-radius:8px; color:#344054; }
+.tab.active { background:#172033; color:white; }
+.page { display:none; }
+.page.active { display:block; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:18px; }
+.card h3 { margin-top:0; }
+.grid.two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+label { display:block; font-weight:600; font-size:14px; margin-bottom:16px; }
+input, select, textarea { width:100%; margin-top:7px; border:1px solid #d0d5dd; border-radius:8px; padding:11px; font:inherit; background:white; }
+textarea { min-height:120px; resize:vertical; }
+.rating-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+.rating-grid label { font-size:13px; }
+.parameter { display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--line); }
+.parameter span { color:var(--muted); }
+.steps { line-height:2; color:#475467; }
+.section-head { display:flex; justify-content:space-between; gap:20px; align-items:end; }
+.section-head p, .muted { color:var(--muted); }
+.section-head select { min-width:260px; }
+.report-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin:18px 0; }
+.metric { border:1px solid var(--line); border-radius:10px; padding:14px; }
+.metric small { color:var(--muted); display:block; }
+.metric strong { font-size:22px; display:block; margin-top:5px; }
+.bar-row { margin:13px 0; }
+.bar-label { display:flex; justify-content:space-between; font-size:13px; margin-bottom:5px; }
+.bar { height:9px; background:#e9edf5; border-radius:20px; overflow:hidden; }
+.fill { height:100%; background:var(--primary); }
+.pill { display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+.positive { background:#e5f6ee; color:var(--success); }
+.negative { background:#fde9e9; color:var(--danger); }
+.neutral { background:#eef1f5; color:#596273; }
+.flag { border-left:5px solid var(--danger); background:#fff5f5; padding:15px; border-radius:8px; margin:12px 0; }
+.good { color:var(--success); font-weight:700; }
+.bad { color:var(--danger); font-weight:700; }
+.sentiment-item { padding:15px 0; border-bottom:1px solid var(--line); }
+footer { text-align:center; color:var(--muted); padding:25px; }
+@media(max-width:800px) {
+  .stats { grid-template-columns:repeat(2,1fr); }
+  .grid.two, .rating-grid, .report-grid { grid-template-columns:1fr; }
+  .hero, .section-head { flex-direction:column; align-items:stretch; }
+  .section-head select { min-width:0; }
+}
